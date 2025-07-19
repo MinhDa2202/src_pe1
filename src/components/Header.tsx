@@ -25,9 +25,9 @@ export default function Header({ onCreatePost }: HeaderProps) {
           </div>
           <div className="hidden sm:block">
             <h1 className="font-black text-2xl bg-gradient-to-r from-white via-purple-200 to-cyan-200 bg-clip-text text-transparent">
-              PostManager
+              Contact Page
             </h1>
-            <p className="text-sm text-purple-300 -mt-1 font-medium">Quản lý bài đăng </p>
+            <p className="text-sm text-purple-300 -mt-1 font-medium">Quản lý danh bạ</p>
           </div>
         </Link>
 
@@ -54,7 +54,7 @@ export default function Header({ onCreatePost }: HeaderProps) {
               className="bg-gradient-to-r from-emerald-500 via-cyan-500 to-blue-600 hover:from-emerald-400 hover:via-cyan-400 hover:to-blue-500 text-white shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 rounded-2xl px-6 py-3 font-bold border border-white/20 hover:scale-105 hover:-translate-y-1"
             >
               <Plus className="h-5 w-5 mr-2 animate-spin hover:animate-none transition-all" />
-              <span className="hidden sm:inline">Tạo Bài Đăng</span>
+              <span className="hidden sm:inline">Tạo liên hệ</span>
               <span className="sm:hidden">Tạo</span>
             </Button>
           )}

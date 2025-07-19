@@ -81,10 +81,6 @@ export default function PostModal({
       newErrors.description = 'Mô tả không được vượt quá 500 ký tự';
     }
 
-    if (!post && !imageFile) {
-      newErrors.image = 'Hình ảnh là bắt buộc';
-    }
-
     // Validate image file if provided
     if (imageFile) {
       const maxSize = 10 * 1024 * 1024; // 10MB
@@ -145,14 +141,14 @@ export default function PostModal({
         <DialogHeader className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-sky-200/30 to-transparent rounded-t-3xl"></div>
           <DialogTitle className="text-2xl font-black text-center mb-4 text-sky-700 relative z-10">
-            {post ? '✨ Chỉnh Sửa Bài Đăng ✨' : '🚀 Tạo Bài Đăng Mới 🚀'}
+            {post ? '✨ Chỉnh Sửa Bài Đăng ✨' : '🚀 Tạo Liên Hệ Mới 🚀'}
           </DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-6 p-2">
           <div className="space-y-3">
             <label className="text-lg font-bold block text-sky-700">
-              📝 Tiêu đề <span className="text-red-500 animate-pulse">*</span>
+              📝 Tên <span className="text-red-500 animate-pulse">*</span>
             </label>
             <Input
               value={title}
@@ -172,7 +168,7 @@ export default function PostModal({
 
           <div className="space-y-3">
             <label className="text-lg font-bold block text-sky-700">
-              📄 Mô tả <span className="text-red-500 animate-pulse">*</span>
+              📄 Số điện thoại <span className="text-red-500 animate-pulse">*</span>
             </label>
             <Textarea
               value={description}
@@ -180,7 +176,7 @@ export default function PostModal({
                 setDescription(e.target.value);
                 setErrors(prev => ({ ...prev, description: '' }));
               }}
-              placeholder="✨ Mô tả chi tiết về bài đăng của bạn..."
+              placeholder="✨ Nhập số điện thoại"
               rows={5}
               className={`bg-white/70 border-2 ${errors.description ? 'border-red-500 animate-shake' : 'border-sky-300 focus:border-sky-500'} text-sky-800 placeholder:text-sky-400 rounded-2xl px-4 py-3 text-lg font-medium backdrop-blur-sm transition-all duration-300 hover:bg-white/90 focus:ring-4 focus:ring-sky-200 resize-none`}
             />
@@ -192,46 +188,6 @@ export default function PostModal({
           </div>
 
           <div className="space-y-3">
-            <label className="text-lg font-bold block text-sky-700">
-              🖼️ Hình ảnh {!post && <span className="text-red-500 animate-pulse">*</span>}
-            </label>
-            
-            {imagePreview ? (
-              <div className="relative group">
-                <div className="relative w-full h-56 rounded-3xl overflow-hidden border-2 border-sky-300 shadow-2xl shadow-sky-500/30 hover:shadow-blue-500/30 transition-all duration-500">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={imagePreview}
-                    alt="Preview"
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <Button
-                  type="button"
-                  size="icon"
-                  className="absolute top-4 right-4 h-12 w-12 bg-red-500/90 hover:bg-red-600 text-white shadow-2xl backdrop-blur-md rounded-full border-2 border-white/30 ring-2 ring-red-500/50 hover:ring-red-400/70 transition-all duration-300 hover:scale-110"
-                  onClick={removeImage}
-                >
-                  <X className="h-6 w-6" />
-                </Button>
-              </div>
-            ) : (
-              <div
-                className={`border-3 border-dashed rounded-3xl p-8 text-center cursor-pointer hover:scale-105 transition-all duration-300 ${
-                  errors.image ? 'border-red-500 bg-red-50 animate-shake' : 'border-sky-300 hover:border-blue-400 bg-white/50 hover:bg-white/70'
-                } backdrop-blur-sm`}
-                onClick={() => fileInputRef.current?.click()}
-              >
-                <Upload className="h-16 w-16 mx-auto mb-4 text-sky-500 group-hover:text-blue-600 transition-colors animate-bounce" />
-                <p className="text-lg text-sky-700 font-semibold">
-                  🎨 Nhấp để chọn hình ảnh tuyệt đẹp
-                </p>
-                <p className="text-sm text-sky-500 mt-2">
-                  JPEG, PNG, WebP, GIF - Tối đa 10MB
-                </p>
-              </div>
-            )}
             
             <input
               ref={fileInputRef}
